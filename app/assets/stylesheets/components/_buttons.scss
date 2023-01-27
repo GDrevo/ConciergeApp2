@@ -1,0 +1,40 @@
+.my-standard-button {
+  width: 150px;
+  background-color: $blue;
+  border-radius: 50px;
+  h5 {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: $white;
+  }
+}
+
+.my-cta-book-button {
+  width: 150px;
+  border-radius: 50px;
+  border: 1px solid $lightbluedark;
+  margin: 0 auto;
+  h5 {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: 100;
+  }
+}
+
+.my-cta-cleaner-button {
+  width: 200px;
+  background-color: white;
+  border-radius: 50px;
+  h5 {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: $darkblue;
+    font-weight: 400;
+  }
+}

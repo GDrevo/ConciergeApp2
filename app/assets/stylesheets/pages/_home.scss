@@ -1,1 +1,150 @@
 // Specific CSS for your home-page
+.my-container {
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: 20px;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+h5 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.banner-top-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.banner-top-left {
+  width: 40%;
+}
+
+.banner-top-right {
+  width: 55%;
+  img {
+    width: 100%;
+  }
+}
+
+.banner-bottom-container {
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 33%;
+  padding-right: 33%;
+  padding-bottom: 100px;
+}
+
+.how-it-works-container {
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $white;
+}
+
+.how-it-works-part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+
+.how-it-works-left {
+  width: 48%;
+  img {
+    width: 100%;
+  }
+}
+
+.how-it-works-right {
+  width: 48%;
+  text-align: start;
+}
+
+.review-container {
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $yellow;
+}
+
+.review-photo-container {
+  padding-left: 40%;
+  padding-right: 40%;
+  padding-bottom: 25px;
+  img {
+    width: 100px;
+    border-radius: 50%;
+  }
+}
+
+.cta-book-container {
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 33%;
+  padding-right: 33%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.cta-book-image-container {
+  padding-left: 40%;
+  padding-right: 40%;
+  padding-bottom: 25px;
+  img {
+    width: 100px;
+    border-radius: 50%;
+  }
+}
+
+.cta-cleaner-container {
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: $blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    margin: 0;
+    margin-right: 25px;
+  }
+}
