@@ -1,3 +1,11 @@
 <div class="availabilities-container">
+  <%= week_calendar(events: @availabilities, end_attribute: :end_time) do |date, availabilities| %>
+    <%= date %>
 
+    <% availabilities.each do |availability| %>
+      <div class="availability">
+
+      </div>
+    <% end %>
+  <% end %>
 </div>
