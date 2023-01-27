@@ -1,0 +1,13 @@
+<div class="appointment-container">
+  <h1>Make a Booking</h1>
+  <h3>Fill out the form below to book one of our services</h3>
+  <div class="appointment-form">
+    <%= simple_form_for @appointment, data: { controller: 'flatpickr' } do |f| %>
+      <%= f.input :rooms, collection: [1, 2, 3, 4, 5, 6], as: :radio_buttons, input_html: { class: 'rooms-input' }, checked: 1 %>
+      <%= f.input :service, collection: ["Basic", "Medium", "Premium"], as: :radio_buttons, input_html: { class: 'service-input '}, checked: "Basic" %>
+      <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+      <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" }, id: 'end_time' } %>
+      <%= f.submit 'Schedule your appointment' %>
+    <% end %>
+  </div>
+</div>

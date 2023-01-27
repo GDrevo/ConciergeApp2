@@ -1,2 +1,81 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner-top-container">
+  <div class="banner-top-left">
+    <h1>Sit tight and Let's do the cleaning</h1>
+    <p>When your environment is clean, you feel happier, healthier and more relaxed. CleanersApp is a cleaning service for your everyday worries</p>
+    <div class="my-standard-button">
+      <%= link_to new_appointment_path do %>
+        <h5>BOOK NOW</h5>
+      <% end %>
+    </div>
+  </div>
+  <div class="banner-top-right">
+    <%= image_tag "image1.png", alt: "Image" %>
+  </div>
+</div>
+<div class="banner-bottom-container">
+  <h2>Book today to make your place shine like never before.</h2>
+  <p>We know cleaning can be hectic, time-consuming, dirty, and can involve a bruised knee or two. Luckily for you, we love to clean. It's basically all we do.</p>
+</div>
+<div class="how-it-works-container">
+  <h2>How it works</h2>
+  <div class="how-it-works-part">
+    <div class="how-it-works-left">
+      <%= image_tag "how-it-works-1.png", alt: "Image" %>
+    </div>
+    <div class="how-it-works-right">
+      <h3>Schedule a time</h3>
+      <p>You can use our online booking platform or call our office to make a booking and schedule a time for us to come and clean.</p>
+      <div class="my-standard-button">
+        <%= link_to root_path do %>
+          <h5>BOOK NOW</h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="how-it-works-part">
+    <div class="how-it-works-left">
+      <%= image_tag "how-it-works-2.png", alt: "Image" %>
+    </div>
+    <div class="how-it-works-right">
+      <h3>We come with our magical cleaning wands</h3>
+      <p>We come to the location at the scheduled time. We clean the heck out of your space. From only 50€ per hour you can fully customize the service you'll receive to suit your pressing needs.</p>
+      <div class="my-standard-button">
+        <%= link_to root_path do %>
+          <h5>BOOK NOW</h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="how-it-works-part">
+    <div class="how-it-works-left">
+      <%= image_tag "how-it-works-3.png", alt: "Image" %>
+    </div>
+    <div class="how-it-works-right">
+      <h3>Your job is to relax</h3>
+      <p>We come with a 100% satisfaction guarantee. You do not need to worry about our service. In the rare event you're not satisfied with the quality of the service, we will make it right with our full refund policy or our deep cleaning service.</p>
+      <div class="my-standard-button">
+        <%= link_to root_path do %>
+          <h5>BOOK NOW</h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="review-container">
+  <div class="review-photo-container">
+    <%= image_tag "profilepic.jpg", alt: "Image" %>
+  </div>
+  <h3>"I wouldn't hesitate to recommend CleanersApp. They have a very professional attitude, and truly deliver an outstanding cleaning service"</h3>
+  <p>Nancy Drogo</p>
+</div>
+<div class="cta-book-container">
+  <div class="cta-book-image-container">
+    <%= image_tag "cta.png", alt: "Image" %>
+  </div>
+  <h3>Need regular cleaning for your House or Apartment?</h3>
+  <div class="my-cta-book-button">
+    <%= link_to root_path do %>
+      <h5>BOOK TODAY</h5>
+    <% end %>
+  </div>
+</div>
