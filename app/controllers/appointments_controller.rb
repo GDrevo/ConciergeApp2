@@ -5,19 +5,6 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
   end
 
-  # def available_cleaners
-  #   start_date = params[:start_date]
-  #   end_date = params[:end_date]
-  #   @cleaners = Cleaner.all
-  #   @available_cleaners = []
-  #   @cleaners.each do |cleaner|
-  #     if cleaner.availabilities.where("start_date <= ? AND end_date >= ?", end_date, start_date).exists?
-  #       @available_cleaners << cleaner
-  #     end
-  #   end
-  #   render json: @available_cleaners
-  # end
-
   def available_cleaners
     start_date = params[:start_date]
     end_date = params[:end_date]
