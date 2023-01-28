@@ -6,4 +6,22 @@ class AvailabilitiesController < ApplicationController
 
     @availabilities = Availability.where(start_time: start_date.beginning_of_week..start_date.end_of_week)
   end
+
+  def new
+    @cleaner = current_cleaner
+    @availability = Availability.new
+  end
+
+  def create
+    @availability = Availability.new(availability_params)
+    @availability.cleaner = current_cleaner
+    @availability.save
+    redirect_to cleaner_availabilities_path
+  end
+
+  private
+
+  def availability_params
+    params.require(:availability).permit(:start_time, :end_time)
+  end
 end

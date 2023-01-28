@@ -1,0 +1,43 @@
+.calendar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 50px;
+}
+
+.simple-calendar {
+  margin: 50px;
+  table {
+    min-height: 50vh;
+  }
+  .today {
+    background-color: #FAF3DD;
+  }
+}
+
+.availability {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  p {
+    margin: 0;
+  }
+}
+
+.availability:hover {
+  background: #1BCB7F;
+  color: white;
+}
