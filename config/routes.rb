@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :cleaners do
-    resources :availabilities
+    resources :availabilities, only: %i[index create destroy]
   end
-  resources :appointments
+  resources :appointments, only: %i[new create edit update destroy available_cleaners]
+  get '/appointments/available_cleaners' => 'appointments#available_cleaners'
 end
