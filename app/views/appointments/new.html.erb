@@ -9,7 +9,6 @@
       <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime", cleanersappointments_target: "endDate", action: "change->cleanersappointments#updateCleaners" }, id: 'end_time' } %>
       <label for="appointment_duration">Duration</label>
       <input type="text" name="appointment[duration]" data-action="change->cleanersappointments#updateCleaners" id="appointment_duration">
-      <%#= f.select :cleaner, input_html: { data: { cleanersappointments_target: "cleanerList" } } %>
       <label for="appointment_cleaner_id">Cleaner</label>
       <select name="appointment[cleaner_id]" class="cleaner-box" id="appointment_cleaner_id" data-cleanersappointments-target="cleanerList"></select>
       <%= f.submit 'Schedule your appointment' %>
