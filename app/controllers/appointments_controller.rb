@@ -5,6 +5,20 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
   end
 
+  def create
+    @appointment = Appointment.new(appointment_params)
+    @user = current_user if user_signed_in?
+    @appointment.user = @user
+    raise
+    if @appointment.save
+      redirect_to appointment_path(@appointment)
+    end
+  end
+
+  def show
+
+  end
+
   def available_cleaners
     start_date = params[:start_date]
     end_date = params[:end_date]
@@ -36,5 +50,11 @@ class AppointmentsController < ApplicationController
     end
 
     render json: @available_cleaners
+  end
+
+  private
+
+  def appointment_params
+    params.require(:appointment).permit(:start_time, :end_time, :rooms, :service)
   end
 end
