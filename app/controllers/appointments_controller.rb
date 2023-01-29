@@ -9,6 +9,9 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @user = current_user if user_signed_in?
     @appointment.user = @user
+    cleaner_availability = @appointment.cleaner.availabilities.where("start_time <= ? AND end_time >= ?", @appointment.end_time, @appointment.start_time).first
+    # TO DO: reduce the cleaner_availability by the estimated time of the @appointment and save it
+    calculate_price_and_time(@appointment)
     raise
     if @appointment.save
       redirect_to appointment_path(@appointment)
@@ -54,7 +57,30 @@ class AppointmentsController < ApplicationController
 
   private
 
+  def calculate_price_and_time(appointment)
+    roomsprice = appointment.rooms.to_i
+    roomstime = appointment.rooms.to_i
+
+    case appointment.service
+    when "Basic"
+      serviceprice = 20
+      servicetime = 1 / 3.0
+    when "Medium"
+      serviceprice = 30
+      servicetime = 2 / 3.0
+    else
+      serviceprice = 40
+      servicetime = 4 / 3.0
+    end
+
+    estimated_price = roomsprice * serviceprice
+    estimated_time = ((roomstime * servicetime) * 2).round / 2.0
+    appointment.estimated_time = estimated_time
+    appointment.price = estimated_price
+    raise
+  end
+
   def appointment_params
-    params.require(:appointment).permit(:start_time, :end_time, :rooms, :service)
+    params.require(:appointment).permit(:start_time, :end_time, :rooms, :service, :cleaner_id)
   end
 end
