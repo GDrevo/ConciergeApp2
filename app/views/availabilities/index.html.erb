@@ -3,9 +3,19 @@
     <%= date %>
 
     <% availabilities.each do |availability| %>
-      <div class="availability">
-        <p><%= availability.time %></p>
-      </div>
+      <% if availability.attributes.keys.include?("user_id") %>
+        <div class="appointment">
+          <p><%= availability.start_time.strftime("%k:%M") %>
+          <p> - </p>
+          <p><%= availability.end_time.strftime("%k:%M") %></p>
+        </div>
+      <% else %>
+        <div class="availability">
+          <p><%= availability.start_time.strftime("%k:%M") %>
+          <p> - </p>
+          <p><%= availability.end_time.strftime("%k:%M") %></p>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
