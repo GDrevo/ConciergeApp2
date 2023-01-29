@@ -12,3 +12,6 @@ application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TimeAndPriceEstimationsController from "./time_and_price_estimations_controller"
+application.register("time-and-price-estimations", TimeAndPriceEstimationsController)
