@@ -7,6 +7,9 @@ import { application } from "./application"
 import CleanersappointmentsController from "./cleanersappointments_controller"
 application.register("cleanersappointments", CleanersappointmentsController)
 
+import EndDateCalculationController from "./end_date_calculation_controller"
+application.register("end-date-calculation", EndDateCalculationController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 

@@ -4,6 +4,15 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["rooms", "service", "duration", "price", "estimatedTime", "estimatedPrice"]
 
+  connect() {
+    const estimatedTime = this.roundHalf((this.roomsTime()) * this.serviceTime())
+    this.durationTarget.innerHTML = estimatedTime + "hr(s)"
+    this.estimatedTimeTarget.innerHTML = estimatedTime
+    const price = (this.roomsPrice()) * this.servicePrice()
+    this.priceTarget.innerHTML = price + "€"
+    this.estimatedPriceTarget.innerHTML = price
+  }
+
   updateTime() {
     const estimatedTime = this.roundHalf((this.roomsTime()) * this.serviceTime())
     this.durationTarget.innerHTML = estimatedTime + "hr(s)"
@@ -11,7 +20,6 @@ export default class extends Controller {
     const price = (this.roomsPrice()) * this.servicePrice()
     this.priceTarget.innerHTML = price + "€"
     this.estimatedPriceTarget.innerHTML = price
-    console.log(this.priceTarget)
   }
 
   roomsTime() {

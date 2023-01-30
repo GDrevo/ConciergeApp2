@@ -10,7 +10,6 @@ export default class extends Controller {
     const startDate = this.startDateTarget.value
     const endDate = this.endDateTarget.value
     const url = `/appointments/available_cleaners?start_date=${startDate}&end_date=${endDate}`
-    console.log(url)
     if (startDate !== "" && endDate !== "") {
       fetch(url)
         .then(response => response.json())
