@@ -1,0 +1,9 @@
+<div class="booking">
+  <p>Order confirmation n°<%= @appointment.id %></p>
+  <h1><%= @appointment.cleaner.name %> will take care of your place!</h1>
+  <div class="booking-details">
+    <p>When: <%= @appointment.start_time.strftime("%A %-d %B %Y at %-l:%M%P") %></p>
+    <p>Estimated duration: <%= @appointment.estimated_time %> hour(s)</p>
+    <p>Price: <%= @appointment.price %> €</p>
+  </div>
+</div>

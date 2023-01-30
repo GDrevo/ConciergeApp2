@@ -3,10 +3,12 @@ class AvailabilitiesController < ApplicationController
 
   def index
     start_date = params.fetch(:start_date, Date.today).to_date
-
-    @availabilities = Availability.where(start_time: start_date.beginning_of_week..start_date.end_of_week)
-    @appointments = Appointment.where(start_time: start_date.beginning_of_week..start_date.end_of_week)
-    @availabilities = @availabilities + @appointments
+    availabilities = Availability.where(start_time: start_date.beginning_of_week..start_date.end_of_week)
+    @availabilities = availabilities.where(cleaner_id: params[:cleaner_id])
+    # raise
+    appointments = Appointment.where(start_time: start_date.beginning_of_week..start_date.end_of_week)
+    @appointments = appointments.where(cleaner_id: params[:cleaner_id])
+    @availabilities += @appointments
   end
 
   def new
@@ -24,6 +26,6 @@ class AvailabilitiesController < ApplicationController
   private
 
   def availability_params
-    params.require(:availability).permit(:start_time, :end_time)
+    params.require(:availability).permit(:start_time, :end_time, :cleaner_id)
   end
 end
