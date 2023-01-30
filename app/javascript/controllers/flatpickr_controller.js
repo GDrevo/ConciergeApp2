@@ -5,12 +5,13 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
-  static targets = [ "startTime", "endTime" ]
+  static targets = [ "startTime", "endTime", "duration" ]
   connect() {
     flatpickr(this.startTimeTarget, {
-              enableTime: true,
-              // Provide an id for the plugin to work
-              plugins: [new rangePlugin({ input: "#end_time"})]})
-    flatpickr(this.endTimeTarget, {})
+      enableTime: true
+    })
+    flatpickr(this.endTimeTarget, {
+      enableTime: true
+    })
   }
 }

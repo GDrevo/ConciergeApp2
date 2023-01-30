@@ -19,10 +19,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def show
-    @appointment = Appointment.find(params[:id])
-  end
-
   def available_cleaners
     start_date = params[:start_date]
     end_date = params[:end_date]
@@ -54,6 +50,10 @@ class AppointmentsController < ApplicationController
     end
 
     render json: @available_cleaners
+  end
+
+  def show
+    @appointment = Appointment.find(params[:id])
   end
 
   private

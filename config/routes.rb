@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :cleaners do
     resources :availabilities, only: %i[new index create destroy]
   end
-  resources :appointments, only: %i[new create edit update destroy available_cleaners]
   get '/appointments/available_cleaners' => 'appointments#available_cleaners'
+  resources :appointments, only: %i[new create edit update show destroy available_cleaners]
 end
