@@ -12,7 +12,17 @@ class AppointmentsController < ApplicationController
     cleaner_availability = @appointment.cleaner.availabilities.where("start_time <= ? AND end_time >= ?", @appointment.end_time, @appointment.start_time).first
     # TO DO: reduce the cleaner_availability by the estimated time of the @appointment and save it
     calculate_price_and_time(@appointment)
-    cleaner_availability.start_time += @appointment.estimated_time.hours
+    if cleaner_availability.start_time == @appointment.start_time
+      cleaner_availability.start_time += @appointment.estimated_time.hours
+    elsif cleaner_availability.end_time == @appointment.end_time
+      cleaner_availability.end_time -= @appointment.estimated_time.hours
+    else
+      new_availability = Availability.new(start_time: @appointment.end_time, end_time: cleaner_availability.end_time)
+      new_availability.cleaner = @appointment.cleaner
+      cleaner_availability.end_time = @appointment.start_time
+      new_availability.save
+    end
+
     if @appointment.save
       cleaner_availability.save
       redirect_to appointment_path(@appointment)
