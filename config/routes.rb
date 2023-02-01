@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get 'about', to: "pages#about"
+  get 'faq', to: "pages#faq"
 
   resources :cleaners, only: [:show] do
     resources :availabilities, only: %i[new index create destroy]

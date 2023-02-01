@@ -10,6 +10,9 @@ application.register("cleanersappointments", CleanersappointmentsController)
 import EndDateCalculationController from "./end_date_calculation_controller"
 application.register("end-date-calculation", EndDateCalculationController)
 
+import FaqtoggleController from "./faqtoggle_controller"
+application.register("faqtoggle", FaqtoggleController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
