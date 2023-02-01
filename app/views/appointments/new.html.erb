@@ -25,7 +25,11 @@
         <h5 data-time-and-price-estimations-target="price"></h5>
       </div>
 
-      <%= f.input :cleaner_id, collection: [""], input_html: { data: { cleanersappointments_target: "cleanerList" } }, label: "Enter dates to choose a cleaner" %>
+      <%= f.input :cleaner_id, collection: [""], input_html: { data: { cleanersappointments_target: "cleanerList", action: "change->cleanersappointments#updateSelectedCleaner" } }, label: "Enter dates to choose a cleaner" %>
+
+      <div class="selected-cleaner-container" data-cleanersappointments-target="selectedCleaner">
+
+      </div>
 
       <%= f.submit 'Schedule your appointment' %>
 

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="cleanersappointments"
 export default class extends Controller {
-  static targets = ["cleanerList", "startDate", "endDate"]
+  static targets = ["cleanerList", "startDate", "endDate", "selectedCleaner"]
 
   updateCleaners(event) {
     event.preventDefault()
@@ -20,9 +20,29 @@ export default class extends Controller {
             option.value = cleaner.id
             option.text = cleaner.name
             this.cleanerListTarget.appendChild(option)
+            this.cleanerListTarget.dispatchEvent(new Event("change"));
           })
         })
         .catch(error => console.log(error))
     }
+  }
+
+  updateSelectedCleaner(event) {
+    const selectedCleanerId = event.target.value
+    const url = `/cleaners/${selectedCleanerId}`
+    console.log(url)
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.statusText}`);
+        }
+        console.log(response)
+        return response.json();
+      })
+      .then(data => {
+        console.log(data)
+        this.selectedCleanerTarget.innerHTML = `<h3>${data.name}</h3> <p>This is the description of the cleaner called ${data.name}.</p>`
+      })
+      .catch(error => console.log(error))
   }
 }
