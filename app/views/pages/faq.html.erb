@@ -1,0 +1,63 @@
+<div class="faq">
+  <h2>FAQ</h2>
+  <h4>Frequently Asked Questions</h4>
+  <div class="faq-item" data-controller="faqtoggle">
+    <h3 class="faq-question" data-action="click->faqtoggle#toggle">
+      + What are your opening times ?
+    </h3>
+    <div class="faq-answer hidden" data-faqtoggle-target="answer">
+      <p>We operate Monday to Sunday 7:00am to 6:00pm. However, bookings can be made 24/7 from your mobile, tablet or computer.</p>
+    </div>
+  </div>
+  <div class="faq-item" data-controller="faqtoggle">
+    <h3 class="faq-question" data-action="click->faqtoggle#toggle">
+      + Can I tip my Cleaner?
+    </h3>
+    <div class="faq-answer hidden" data-faqtoggle-target="answer">
+      <p>Yes. After your booking, you will get a chance to rate and tip your cleaner online. Please note, tipping is optional and is enabled when you give a positive rating</p>
+    </div>
+  </div>
+  <div class="faq-item" data-controller="faqtoggle">
+    <h3 class="faq-question" data-action="click->faqtoggle#toggle">
+      + My Place is a total mess. What should I do?
+    </h3>
+    <div class="faq-answer hidden" data-faqtoggle-target="answer">
+      <p>An obvious case to use iClean is where you have no regular domestic cleaner (or haven't had one for a while) and things are starting to get real in your living space. There are new species of fungi growing on your dirty dishes, and your bedding is used to hide the sheets in addition to covering you up.</p>
+    </div>
+  </div>
+  <div class="faq-item" data-controller="faqtoggle">
+    <h3 class="faq-question" data-action="click->faqtoggle#toggle">
+      + I'm moving in or out of my place. What options do you have?
+    </h3>
+    <div class="faq-answer hidden" data-faqtoggle-target="answer">
+      <p>If you're moving in or out of your place, it's likely that there's some additional cleaning to be done. In this case, select the number of rooms to be cleaned as well as additional tasks to be done. If there is a lot of cleaning needed, you may want to use two cleaners.</p>
+    </div>
+  </div>
+  <div class="faq-item" data-controller="faqtoggle">
+    <h3 class="faq-question" data-action="click->faqtoggle#toggle">
+      + Do I need to provide lunch for cleaners?
+    </h3>
+    <div class="faq-answer hidden" data-faqtoggle-target="answer">
+      <p>In most cases, your iClean cleaner will bring their own small packed lunch. For longer cleaning appointments, please allow your cleaner to have a brief lunch break.</p>
+    </div>
+  </div>
+  <div class="faq-item" data-controller="faqtoggle">
+    <h3 class="faq-question" data-action="click->faqtoggle#toggle">
+      + Do you conduct a background check on employees?
+    </h3>
+    <div class="faq-answer hidden" data-faqtoggle-target="answer">
+      <p>Most reputable services perform background checks on all of their employees. When you hire an independent cleaner, you act as their employer; therefore making you responsible for doing any background screenings. A background check can ensure the safety of you and your home by allowing you to know who is entering your home.</p>
+    </div>
+  </div>
+</div>
+<div class="cta-book-container">
+  <div class="cta-book-image-container">
+    <%= image_tag "cta.png", alt: "Image" %>
+  </div>
+  <h3>Need regular cleaning for your House or Apartment?</h3>
+  <div class="my-cta-book-button">
+    <%= link_to root_path do %>
+      <h5>BOOK TODAY</h5>
+    <% end %>
+  </div>
+</div>

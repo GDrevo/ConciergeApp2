@@ -1,0 +1,28 @@
+.hidden {
+  display: none;
+}
+
+.faq {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  h4 {
+    margin-bottom: 50px;
+  }
+}
+
+.faq-item {
+  text-align: start;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.faq-answer {
+  padding: 25px;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 25px;
+  p {
+    margin: 0;
+  }
+}
