@@ -1,0 +1,38 @@
+<div class="contact-container">
+  <div class="contact-header">
+    <h1>Contact Us Today</h1>
+    <p>We'll get back to you as soon as possible</p>
+  </div>
+
+  <%= simple_form_for @contact do |f| %>
+    <% if @contact.errors.any? %>
+      <div id="error_explanation" class="error-explanation">
+        <div class="">
+          <h4><%= pluralize(@contact.errors.count, "error") %></h4>
+        </div>
+
+        <ul class="">
+            <% @contact.errors.each do |error| %>
+              <li class="">
+                <%= error.full_message %>
+              </li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="contact-field-1">
+      <%= f.input :name, label: "Your Name", input_html: { class: "contact-field" } %>
+    </div>
+    <div class="contact-field-2">
+      <%= f.input :email, label: "Your Email", input_html: { class: "contact-field" } %>
+      <%= f.input :phone, label: "Your Phone", input_html: { class: "contact-field" } %>
+    </div>
+    <div class="contact-field-3">
+      <%= f.input :message, as: :text, label: "Your Message", input_html: { class: "contact-field" } %>
+    </div>
+    <div class="contact-submit">
+      <%= f.submit 'SEND MESSAGE' %>
+    </div>
+  <% end %>
+</div>

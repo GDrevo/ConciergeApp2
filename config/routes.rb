@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   end
   get '/appointments/available_cleaners' => 'appointments#available_cleaners'
   resources :appointments, only: %i[new create edit update show destroy available_cleaners]
+
+  resources :contacts, only: %i[new create]
+  get '/contacts', to: 'contacts#new', as: 'contact'
+  get 'contacts/sent'
 end
