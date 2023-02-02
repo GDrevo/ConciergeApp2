@@ -1,0 +1,37 @@
+<div class="contact-container">
+  <h1>Contact Us Today</h1>
+  <p>We'll get back to you as soon as possible</p>
+
+  <%= simple_form_for @contact do |f| %>
+    <% if @contact.errors.any? %>
+      <div id="error_explanation" class="error-explanation">
+        <div class="font-bold text-rose-700 text-sm pb-4">
+          <%= pluralize(@contact.errors.count, "error") %>
+          <p>prohibited this page from being saved:</p>
+        </div>
+
+        <ul class="pb-0 mb-0">
+            <% @contact.errors.each do |error| %>
+              <li class="text-rose-600 pl-4 text-sm">
+                <%= error.full_message %>
+              </li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="contact-field-1">
+      <%= f.input :name, label: "Your Name" %>
+    </div>
+    <div class="contact-field-2">
+      <%= f.input :email, label: "Your Email" %>
+      <%= f.input :phone, label: "Your Phone" %>
+    </div>
+    <div class="contact-field-3">
+      <%= f.input :message, label: "Your Message" %>
+    </div>
+    <div class="contact-field">
+      <%= f.submit 'SEND MESSAGE' %>
+    </div>
+  <% end %>
+</div>
