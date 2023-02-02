@@ -1,0 +1,54 @@
+.contact-container {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 50%;
+}
+
+.contact-header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.new_contact {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.2);
+  margin-bottom: 100px;
+}
+
+.contact-field {
+  background-color: $gray !important;
+  border-radius: 5px;
+}
+
+.contact-field-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact_email, .contact_phone {
+  width: 48%;
+}
+
+.contact_message {
+  textarea {
+    min-height: 150px;
+    vertical-align: top;
+    resize: none;
+  }
+}
+
+.contact-submit {
+  input {
+    background-color: $blue;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 25px;
+    border: 0;
+    border-radius: 5px;
+    width: 40%;
+  }
+}
