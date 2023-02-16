@@ -11,6 +11,9 @@ class AppointmentsController < ApplicationController
     @appointment.user = @user
     end_time = @appointment.end_time
     start_time = @appointment.start_time
+    raise
+    return unless @appointment.cleaner
+
     all_availabilities = @appointment.cleaner.availabilities
     cleaner_availability = all_availabilities.where("start_time <= ? AND end_time >= ?", end_time, start_time).first
     return unless cleaner_availability
@@ -94,6 +97,6 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:start_time, :end_time, :rooms, :service, :cleaner_id)
+    params.require(:appointment).permit(:start_time, :end_time, :rooms, :service, :cleaner_id, :pack, :checkin_type, :checkin_start_time, :checkin_end_time, :checkin_cleaner_id, :checkout_start_time, :checkout_end_time, :checkout_cleaner_id)
   end
 end

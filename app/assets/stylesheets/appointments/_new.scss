@@ -1,4 +1,32 @@
+.appointment-container {
+  margin: 50px;
+  h1, h3 {
+    text-align: center;
+  }
+}
+
 .cleaner-box {
   height: 30px;
   min-width: 100px;
+}
+
+.app-form-container {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.app-form-text {
+  width: 33%;
+  padding: 25px;
+}
+
+.app-form-form {
+  width: 67%;
+  background-color: white;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.2);
+  fieldset {
+    display: flex;
+  }
 }

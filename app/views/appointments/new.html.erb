@@ -5,30 +5,57 @@
 
     <%= simple_form_for @appointment, data: { controller: 'flatpickr end-date-calculation' } do |f| %>
 
-      <%= f.input :rooms, collection: [1, 2, 3, 4, 5, 6], as: :radio_buttons, input_html: { data: { time_and_price_estimations_target: "rooms", action: "change->time-and-price-estimations#updateTime" } }, checked: 1 %>
-
-      <%= f.input :service, collection: ["Basic", "Medium", "Premium"], as: :radio_buttons, input_html: { data: { time_and_price_estimations_target: "service", action: "change->time-and-price-estimations#updateTime" } }, checked: "Basic" %>
-
-      <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime", cleanersappointments_target: "startDate", end_date_calculation_target: "startTime", action: "change->cleanersappointments#updateCleaners change->end-date-calculation#updateEndTime" } } %>
-
-      <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime", cleanersappointments_target: "endDate", end_date_calculation_target: "endTime", action: "change->cleanersappointments#updateCleaners" }, id: 'end_time' } %>
-
-      <%= f.input :estimated_time, collection: [""], input_html: { hidden: "hidden" , data: { time_and_price_estimations_target: "estimatedTime" } } %>
-
-      <div class="time-estimation">
-        <h5 data-time-and-price-estimations-target="duration" data-end-date-calculation-target="duration"></h5>
+      <div class="app-form-container">
+        <div class="app-form-text">
+          <h4>Service</h4>
+        </div>
+        <div class="app-form-form">
+          <%= f.input :pack, collection: ["Check in/out", "Cleaning", "Check in/out & Cleaning"], as: :radio_buttons, checked: "Check in/out" %>
+        </div>
       </div>
 
-      <%= f.input :price, collection: [""], input_html: { hidden: "hidden" , data: { time_and_price_estimations_target: "estimatedPrice" } } %>
-
-      <div class="price-estimation">
-        <h5 data-time-and-price-estimations-target="price"></h5>
+      <div class="app-form-container">
+        <div class="app-form-text">
+          <h4>Check in/out</h4>
+          <p>Please provide the following details</p>
+        </div>
+        <div class="app-form-form">
+          <%= f.input :checkin_type, collection: ["Check in", "Check out", "Check in & out"], as: :radio_buttons, checked: "Check in" %>
+        </div>
       </div>
 
-      <%= f.input :cleaner_id, collection: [""], input_html: { data: { cleanersappointments_target: "cleanerList", action: "change->cleanersappointments#updateSelectedCleaner" } }, label: "Enter dates to choose a cleaner" %>
 
-      <div class="selected-cleaner-container" data-cleanersappointments-target="selectedCleaner">
+      <div class="app-form-container">
+        <div class="app-form-text">
+          <h4>Cleaning Details</h4>
+          <p>Please provide the following details</p>
+        </div>
+        <div class="app-form-form">
+          <%= f.input :rooms, collection: [1, 2, 3, 4, 5, 6], as: :radio_buttons, input_html: { data: { time_and_price_estimations_target: "rooms", action: "change->time-and-price-estimations#updateTime" } }, checked: 1 %>
 
+          <%= f.input :service, collection: ["Basic", "Medium", "Premium"], as: :radio_buttons, input_html: { data: { time_and_price_estimations_target: "service", action: "change->time-and-price-estimations#updateTime" } }, checked: "Basic" %>
+
+          <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime", cleanersappointments_target: "startDate", end_date_calculation_target: "startTime", action: "change->cleanersappointments#updateCleaners change->end-date-calculation#updateEndTime" } } %>
+
+          <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime", cleanersappointments_target: "endDate", end_date_calculation_target: "endTime", action: "change->cleanersappointments#updateCleaners" }, id: 'end_time' } %>
+
+          <%= f.input :estimated_time, collection: [""], input_html: { hidden: "hidden" , data: { time_and_price_estimations_target: "estimatedTime" } } %>
+          <div class="time-estimation">
+            <h5 data-time-and-price-estimations-target="duration" data-end-date-calculation-target="duration"></h5>
+          </div>
+
+          <%= f.input :price, collection: [""], input_html: { hidden: "hidden" , data: { time_and_price_estimations_target: "estimatedPrice" } } %>
+
+          <div class="price-estimation">
+            <h5 data-time-and-price-estimations-target="price"></h5>
+          </div>
+
+          <%= f.input :cleaner_id, collection: [""], input_html: { data: { cleanersappointments_target: "cleanerList", action: "change->cleanersappointments#updateSelectedCleaner" } }, label: "Enter dates to choose a cleaner" %>
+
+          <div class="selected-cleaner-container" data-cleanersappointments-target="selectedCleaner">
+
+          </div>
+        </div>
       </div>
 
       <%= f.submit 'Schedule your appointment' %>
