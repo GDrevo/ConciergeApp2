@@ -7,10 +7,47 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @user = current_user if user_signed_in?
-    @appointment.user = @user
+    @appointment.user = current_user if user_signed_in?
+    case @appointment.pack
+    when "Check in/out"
+      create_checkin_appointment
+    when "Cleaning"
+      create_cleaning
+    when "Check in/out & Cleaning"
+      create_checkin_appointment
+      create_cleaning
+    end
+  end
+
+  def create_checkin_appointment
+    case @appointment.checkin_type
+    when "Check in"
+      create_check_in
+    when "Check out"
+      create_check_out
+    when "Check in & out"
+      create_check_in
+      create_check_out
+    end
+  end
+
+  def create_check_in
+    # TODO: create a new instance of Checkin with type: "checkin"
+    @checkin = Checkin.new(checkin_params)
+    @checkin.user = current_user if user_signed_in?
+    raise
+  end
+
+  def create_check_out
+    # TODO: create a new instance of Checkin with type: "checkout"
+    raise
+  end
+
+  def create_cleaning
     end_time = @appointment.end_time
     start_time = @appointment.start_time
+    return unless @appointment.cleaner
+
     all_availabilities = @appointment.cleaner.availabilities
     cleaner_availability = all_availabilities.where("start_time <= ? AND end_time >= ?", end_time, start_time).first
     return unless cleaner_availability
@@ -93,7 +130,12 @@ class AppointmentsController < ApplicationController
     appointment.price = estimated_price
   end
 
+  # ISSUE TO FIX NOW: checkin params, unknown checkin_type for Checkin
   def appointment_params
-    params.require(:appointment).permit(:start_time, :end_time, :rooms, :service, :cleaner_id)
+    params.require(:appointment).permit(:start_time, :end_time, :rooms, :service, :cleaner_id, :pack, :checkin_type, :checkin_start_time, :checkin_end_time, :checkin_cleaner_id, :checkout_start_time, :checkout_end_time, :checkout_cleaner_id)
+  end
+
+  def checkin_params
+    params.require(:appointment).permit(:checkin_type, :checkin_start_time, :checkin_end_time, :checkin_cleaner_id, :checkout_start_time, :checkout_end_time, :checkout_cleaner_id)
   end
 end

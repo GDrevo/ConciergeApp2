@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_29_200507) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_16_181435) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_200507) do
     t.string "service"
     t.float "estimated_time"
     t.integer "price"
+    t.string "checkin_type"
+    t.string "pack"
+    t.datetime "checkin_start_time"
+    t.datetime "checkin_end_time"
+    t.bigint "checkin_cleaner_id"
+    t.datetime "checkout_start_time"
+    t.datetime "checkout_end_time"
+    t.bigint "checkout_cleaner_id"
+    t.index ["checkin_cleaner_id"], name: "index_appointments_on_checkin_cleaner_id"
+    t.index ["checkout_cleaner_id"], name: "index_appointments_on_checkout_cleaner_id"
     t.index ["cleaner_id"], name: "index_appointments_on_cleaner_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
@@ -36,6 +46,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_200507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cleaner_id"], name: "index_availabilities_on_cleaner_id"
+  end
+
+  create_table "checkins", force: :cascade do |t|
+    t.string "type"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "user_id", null: false
+    t.bigint "cleaner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cleaner_id"], name: "index_checkins_on_cleaner_id"
+    t.index ["user_id"], name: "index_checkins_on_user_id"
   end
 
   create_table "cleaners", force: :cascade do |t|
@@ -76,6 +98,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_29_200507) do
   end
 
   add_foreign_key "appointments", "cleaners"
+  add_foreign_key "appointments", "cleaners", column: "checkin_cleaner_id"
+  add_foreign_key "appointments", "cleaners", column: "checkout_cleaner_id"
   add_foreign_key "appointments", "users"
   add_foreign_key "availabilities", "cleaners"
+  add_foreign_key "checkins", "cleaners"
+  add_foreign_key "checkins", "users"
 end
