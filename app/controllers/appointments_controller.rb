@@ -136,6 +136,7 @@ class AppointmentsController < ApplicationController
   end
 
   def checkin_params
-    params.require(:appointment).permit(:checkin_type, :checkin_start_time, :checkin_end_time, :checkin_cleaner_id, :checkout_start_time, :checkout_end_time, :checkout_cleaner_id)
+    checkin_params = params.require(:appointment).permit(:type, :checkin_start_time, :checkin_end_time, :checkin_cleaner_id, :checkout_start_time, :checkout_end_time, :checkout_cleaner_id)
+    checkin_params.transform_keys { |key| key.gsub("checkin_", "") }
   end
 end
