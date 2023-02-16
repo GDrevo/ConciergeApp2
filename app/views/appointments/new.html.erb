@@ -5,6 +5,8 @@
 
     <%= simple_form_for @appointment, data: { controller: 'flatpickr end-date-calculation' } do |f| %>
 
+      <%# ///////////////////// Service Part of the form //////////////////// %>
+      <%# /////////////////////////////////////////////////////////////////// %>
       <div class="app-form-container">
         <div class="app-form-text">
           <h4>Service</h4>
@@ -14,6 +16,8 @@
         </div>
       </div>
 
+      <%# /////////////////// Check in/out Part of the form ///////////////// %>
+      <%# /////////////////////////////////////////////////////////////////// %>
       <div class="app-form-container">
         <div class="app-form-text">
           <h4>Check in/out</h4>
@@ -21,10 +25,38 @@
         </div>
         <div class="app-form-form">
           <%= f.input :checkin_type, collection: ["Check in", "Check out", "Check in & out"], as: :radio_buttons, checked: "Check in" %>
+
+          <div class="app-form-checkin-container">
+            <div class="app-form-checkin">
+              <%= f.input :checkin_start_time, as: :string, input_html: { data: { flatpickr_target: "checkinStartTime", cleanersappointments_target: "checkinStartDate", end_date_calculation_target: "checkinStartTime", action: "change->cleanersappointments#updateCheckinCleaners change->end-date-calculation#updateCheckinEndTime" } } %>
+
+              <%= f.input :checkin_end_time, as: :string, input_html: { data: { flatpickr_target: "checkinEndTime", cleanersappointments_target: "checkinEndDate", end_date_calculation_target: "checkinEndTime" }, id: 'checkin_end_time' } %>
+
+              <%= f.input :checkin_cleaner_id, collection: [""], input_html: { data: { cleanersappointments_target: "checkinCleanerList", action: "change->cleanersappointments#updateSelectedCheckinCleaner" } }, label: "Enter dates to choose a cleaner" %>
+
+              <div class="selected-cleaner-container" data-cleanersappointments-target="selectedCheckinCleaner">
+
+              </div>
+            </div>
+
+            <div class="app-form-checkout">
+              <%= f.input :checkout_start_time, as: :string, input_html: { data: { flatpickr_target: "checkoutStartTime", cleanersappointments_target: "checkoutStartDate", end_date_calculation_target: "checkoutStartTime", action: "change->cleanersappointments#updateCheckoutCleaners change->end-date-calculation#updateCheckoutEndTime" } } %>
+
+              <%= f.input :checkout_end_time, as: :string, input_html: { data: { flatpickr_target: "checkoutEndTime", cleanersappointments_target: "checkoutEndDate", end_date_calculation_target: "checkoutEndTime" }, id: 'checkout_end_time' } %>
+
+              <%= f.input :checkout_cleaner_id, collection: [""], input_html: { data: { cleanersappointments_target: "checkoutCleanerList", action: "change->cleanersappointments#updateSelectedCheckoutCleaner" } }, label: "Enter dates to choose a cleaner" %>
+
+              <div class="selected-cleaner-container" data-cleanersappointments-target="selectedCheckoutCleaner">
+
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-
+      <%# ///////////////// Cleaning Details Part of the form /////////////// %>
+      <%# /////////////////////////////////////////////////////////////////// %>
       <div class="app-form-container">
         <div class="app-form-text">
           <h4>Cleaning Details</h4>
@@ -37,7 +69,7 @@
 
           <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime", cleanersappointments_target: "startDate", end_date_calculation_target: "startTime", action: "change->cleanersappointments#updateCleaners change->end-date-calculation#updateEndTime" } } %>
 
-          <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime", cleanersappointments_target: "endDate", end_date_calculation_target: "endTime", action: "change->cleanersappointments#updateCleaners" }, id: 'end_time' } %>
+          <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime", cleanersappointments_target: "endDate", end_date_calculation_target: "endTime" }, id: 'end_time' } %>
 
           <%= f.input :estimated_time, collection: [""], input_html: { hidden: "hidden" , data: { time_and_price_estimations_target: "estimatedTime" } } %>
           <div class="time-estimation">
@@ -58,6 +90,8 @@
         </div>
       </div>
 
+      <%# ////////////////////// Submit Part of the form //////////////////// %>
+      <%# /////////////////////////////////////////////////////////////////// %>
       <%= f.submit 'Schedule your appointment' %>
 
     <% end %>

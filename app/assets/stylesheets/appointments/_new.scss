@@ -30,3 +30,12 @@
     display: flex;
   }
 }
+
+.app-form-checkin-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .app-form-checkin, .app-form-checkout {
+    width: 45%;
+  }
+}
