@@ -14,8 +14,16 @@ export default class extends Controller {
       fetch(url)
         .then(response => response.json())
         .then(data => {
+          const indices = []
+          while (indices.length < 5) {
+            const randomIndex = Math.floor(Math.random() * data.length)
+            if (!indices.includes(randomIndex)) {
+              indices.push(randomIndex)
+            }
+          }
+          const shuffledCleaners = indices.map(index => data[index])
           this.cleanerListTarget.innerHTML = ""
-          data.forEach(cleaner => {
+          shuffledCleaners.forEach(cleaner => {
             const option = document.createElement("option")
             option.value = cleaner.id
             option.text = cleaner.name
@@ -38,7 +46,7 @@ export default class extends Controller {
         return response.json();
       })
       .then(data => {
-        this.selectedCleanerTarget.innerHTML = `<h4>${data.name}</h4> <p>This is the description of the cleaner called ${data.name}.</p>`
+        this.selectedCleanerTarget.innerHTML = `<h4>${data.name}</h4> <p>${data.description}</p>`
       })
       .catch(error => console.log(error))
   }
