@@ -5,6 +5,9 @@
   h1, h3 {
     text-align: center;
   }
+  h3 {
+    margin-bottom: 50px;
+  }
 }
 
 .cleaner-box {
@@ -19,13 +22,13 @@
 
 .app-form-text {
   width: 33%;
-  padding: 25px;
+  padding: 50px;
 }
 
 .app-form-form {
   width: 67%;
   background-color: white;
-  padding: 25px;
+  padding: 50px;
   border-radius: 5px;
   box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.2);
   fieldset {
@@ -40,7 +43,7 @@
   margin-top: 50px;
   margin-bottom: 25px;
   .app-form-checkin, .app-form-checkout {
-    width: 45%;
+    width: 48%;
   }
 }
 
@@ -65,8 +68,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
-  margin-left: 25px;
   padding: 0;
   width: 400px;
   input {
@@ -74,7 +75,7 @@
     background-image: none !important;
     width: 100%;
     height: 50px;
-    border-radius: 5px !important;
+    border-radius: 5px;
   }
   label {
     margin-top: 10px;
@@ -85,10 +86,33 @@
   background-color: $gray;
 }
 
+.col-form-label {
+  float: unset;
+}
 
+.form-submit-part {
+  width: 67%;
+  background-color: white;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.2);
+}
+
+.app-form-form-confirm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.confirm-division {
+  width: 33%;
+  margin-bottom: 25px;
+  h4 {
+    font-weight: bold;
+  }
+}
 .submit-form-button {
-  position: absolute;
-  right: 10%;
+  // position: absolute;
+  // right: 10%;
   background-color: $blue;
   color: white;
   font-size: 20px;
@@ -98,4 +122,24 @@
   border: 0;
   border-radius: 5px;
   width: 20%;
+}
+
+#appointment_pack_check_inout, #appointment_check_type_check_in, #appointment_rooms_1, #appointment_service_basic {
+  border-radius: 5px 0 0 5px;
+}
+
+#appointment_pack_cleaning, #appointment_check_type_check_out, #appointment_rooms_2, #appointment_rooms_3, #appointment_rooms_4, #appointment_rooms_5, #appointment_service_medium {
+  border-radius: 0;
+}
+
+#appointment_pack_both, #appointment_check_type_check_in__out, #appointment_rooms_6, #appointment_service_premium {
+  border-radius: 0 5px 5px 0;
+}
+
+.flex-start {
+  justify-content: flex-start !important;
+}
+
+.flex-end {
+  justify-content: flex-end !important;
 }

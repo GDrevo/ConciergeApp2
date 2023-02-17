@@ -10,6 +10,7 @@
       <div class="app-form-container">
         <div class="app-form-text">
           <h2>Service</h2>
+          <p>Please select the desired service</p>
         </div>
         <div class="app-form-form">
           <%= f.input :pack, collection: ["Check in/out", "Cleaning", "Both"], as: :radio_buttons, checked: "Check in/out", input_html: { data: { formparts_target: "service", action: "change->formparts#toggleHidden" } } %>
@@ -24,7 +25,7 @@
           <p>Please provide the following details</p>
         </div>
         <div class="app-form-form">
-          <%= f.input :check_type, collection: ["Check in", "Check out", "Check in & out"], as: :radio_buttons, checked: "Check in", input_html: { data: { checkinparts_target: "service", action: "change->checkinparts#toggleHidden" } } %>
+          <%= f.input :check_type, collection: ["Check in", "Check out", "Check in & out"], as: :radio_buttons, checked: "Check in & out", input_html: { data: { checkinparts_target: "service", action: "change->checkinparts#toggleHidden" } } %>
 
           <div class="app-form-checkin-container" data-checkinparts-target="container">
             <div class="app-form-checkin" data-checkinparts-target="checkin">
@@ -95,7 +96,41 @@
 
       <%# ////////////////////// Submit Part of the form //////////////////// %>
       <%# /////////////////////////////////////////////////////////////////// %>
-      <%= f.submit 'BOOK', class: "submit-form-button" %>
+      <div class="app-form-container">
+        <div class="app-form-text">
+          <h2>Confirm Booking</h2>
+          <p>Please crosscheck your booking to be sure everything is correct</p>
+        </div>
+        <div class="app-form-form">
+          <div class="app-form-form-confirm">
+            <div class="confirm-division">
+              <h4>Pack:</h4>
+              <span>Checkin/out + Cleaning</span>
+            </div>
+            <div class="confirm-division">
+              <h4>Checkin:</h4>
+              <span>No</span>
+            </div>
+            <div class="confirm-division">
+              <h4>Checkout:</h4>
+              <span>Mar 20th - 8:00am-9:00am</span>
+            </div>
+            <div class="confirm-division">
+              <h4>Service:</h4>
+              <span>Medium</span>
+            </div>
+            <div class="confirm-division">
+              <h4>Cleaning:</h4>
+              <span>Mar 20th - 9:00am-11:30am</span>
+            </div>
+            <div class="confirm-division">
+              <h4>Total Fee:</h4>
+              <span>145.00€</span>
+            </div>
+          </div>
+          <%= f.submit 'BOOK', class: "submit-form-button" %>
+        </div>
+      </div>
 
     <% end %>
   </div>
