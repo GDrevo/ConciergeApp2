@@ -65,6 +65,28 @@ class AppointmentsController < ApplicationController
     checkout = Checkin.new(checkin_params)
     checkout.user = current_user if user_signed_in?
     checkout.check_type = "Check out"
+    end_time = checkout.end_time
+    start_time = checkout.start_time
+    return unless checkout.cleaner
+
+    all_availabilities = checkout.cleaner.availabilities
+    cleaner_availability = all_availabilities.where("start_time <= ? AND end_time >= ?", end_time, start_time).first
+    return unless cleaner_availability
+
+    if cleaner_availability.start_time == start_time
+      cleaner_availability.start_time += checkout.duration.hours
+    elsif cleaner_availability.end_time == checkout.end_time
+      cleaner_availability.end_time -= checkout.duration.hours
+    else
+      new_availability = Availability.new(start_time: end_time, end_time: cleaner_availability.end_time)
+      new_availability.cleaner = checkout.cleaner
+      cleaner_availability.end_time = start_time
+      new_availability.save
+    end
+    return unless checkout.save
+
+    cleaner_availability.save
+    redirect_to checkin_path(checkout) if @appointment.pack == "Check in/out"
     raise
   end
 
@@ -155,7 +177,6 @@ class AppointmentsController < ApplicationController
     appointment.price = estimated_price
   end
 
-  # ISSUE TO FIX NOW: checkin params, unknown check_type for Checkin
   def appointment_params
     appointment_params = params.require(:appointment).permit(:start_time, :end_time, :rooms, :service, :cleaner_id, :pack, :check_type, :checkin_start_time, :checkin_end_time, :checkin_cleaner_id, :checkout_start_time, :checkout_end_time, :checkout_cleaner_id)
     appointment_params.transform_keys { |key| key.gsub("check_", "checkin_") }

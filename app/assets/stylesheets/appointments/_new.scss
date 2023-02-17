@@ -34,8 +34,26 @@
 .app-form-checkin-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  margin-bottom: 25px;
   .app-form-checkin, .app-form-checkout {
     width: 45%;
   }
+}
+
+.app-form-checkin-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .app-form-checkin {
+    width: 50%;
+
+  }
+  .app-form-checkout {
+    width: 50%;
+  }
+}
+
+.space-between {
+  justify-content: space-between !important;
 }

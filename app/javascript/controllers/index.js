@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CheckinpartsController from "./checkinparts_controller"
+application.register("checkinparts", CheckinpartsController)
+
 import CleanersappointmentsController from "./cleanersappointments_controller"
 application.register("cleanersappointments", CleanersappointmentsController)
 
@@ -15,6 +18,9 @@ application.register("faqtoggle", FaqtoggleController)
 
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
+
+import FormpartsController from "./formparts_controller"
+application.register("formparts", FormpartsController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
