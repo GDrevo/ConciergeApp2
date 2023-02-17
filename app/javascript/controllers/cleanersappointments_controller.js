@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="cleanersappointments"
 export default class extends Controller {
-  static targets = ["cleanerList", "startDate", "endDate", "selectedCleaner"]
+  static targets = ["cleanerList", "startDate", "endDate", "selectedCleaner", "checkinCleanerList", "checkinStartDate", "checkinEndDate", "selectedCheckinCleaner"]
 
   updateCleaners(event) {
     event.preventDefault()
@@ -42,6 +42,44 @@ export default class extends Controller {
       .then(data => {
         console.log(data)
         this.selectedCleanerTarget.innerHTML = `<h3>${data.name}</h3> <p>This is the description of the cleaner called ${data.name}.</p>`
+      })
+      .catch(error => console.log(error))
+  }
+
+  updateCheckinCleaners(event) {
+    event.preventDefault()
+
+    const startDate = this.checkinStartDateTarget.value
+    const endDate = this.checkinEndDateTarget.value
+    const url = `/appointments/available_cleaners?start_date=${startDate}&end_date=${endDate}`
+    if (startDate !== "" && endDate !== "") {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.checkinCleanerListTarget.innerHTML = ""
+          data.forEach(cleaner => {
+            const option = document.createElement("option")
+            option.value = cleaner.id
+            option.text = cleaner.name
+            this.checkinCleanerListTarget.appendChild(option)
+            this.checkinCleanerListTarget.dispatchEvent(new Event("change"));
+          })
+        })
+        .catch(error => console.log(error))
+    }
+  }
+
+  updateSelectedCheckinCleaner(event) {
+    const selectedCleanerId = event.target.value
+    const url = `/cleaners/${selectedCleanerId}`
+    console.log(url)
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.statusText}`);
+        }
+        console.log(response)
+        return response.json();
       })
       .catch(error => console.log(error))
   }
