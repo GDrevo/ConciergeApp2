@@ -3,7 +3,7 @@
   <h3>Fill out the form below to book one of our services</h3>
   <div class="appointment-form" data-controller='cleanersappointments time-and-price-estimations'>
 
-    <%= simple_form_for @appointment, data: { controller: 'flatpickr end-date-calculation' } do |f| %>
+    <%= simple_form_for @appointment, data: { controller: 'flatpickr end-date-calculation formparts checkinparts' } do |f| %>
 
       <%# ///////////////////// Service Part of the form //////////////////// %>
       <%# /////////////////////////////////////////////////////////////////// %>
@@ -12,22 +12,22 @@
           <h4>Service</h4>
         </div>
         <div class="app-form-form">
-          <%= f.input :pack, collection: ["Check in/out", "Cleaning", "Check in/out & Cleaning"], as: :radio_buttons, checked: "Check in/out" %>
+          <%= f.input :pack, collection: ["Check in/out", "Cleaning", "Check in/out & Cleaning"], as: :radio_buttons, checked: "Check in/out", input_html: { data: { formparts_target: "service", action: "change->formparts#toggleHidden" } } %>
         </div>
       </div>
 
       <%# /////////////////// Check in/out Part of the form ///////////////// %>
       <%# /////////////////////////////////////////////////////////////////// %>
-      <div class="app-form-container">
+      <div class="app-form-container" data-formparts-target="checkinPart">
         <div class="app-form-text">
           <h4>Check in/out</h4>
           <p>Please provide the following details</p>
         </div>
         <div class="app-form-form">
-          <%= f.input :check_type, collection: ["Check in", "Check out", "Check in & out"], as: :radio_buttons, checked: "Check in" %>
+          <%= f.input :check_type, collection: ["Check in", "Check out", "Check in & out"], as: :radio_buttons, checked: "Check in", input_html: { data: { checkinparts_target: "service", action: "change->checkinparts#toggleHidden" } } %>
 
-          <div class="app-form-checkin-container">
-            <div class="app-form-checkin">
+          <div class="app-form-checkin-container" data-checkinparts-target="container">
+            <div class="app-form-checkin" data-checkinparts-target="checkin">
               <%= f.input :checkin_start_time, as: :string, input_html: { data: { flatpickr_target: "checkinStartTime", end_date_calculation_target: "checkinStartTime",cleanersappointments_target: "checkinStartDate", action: "change->cleanersappointments#updateCheckinCleaners change->end-date-calculation#updateCheckinEndTime" } } %>
 
               <%= f.input :checkin_end_time, as: :string, input_html: { data: { flatpickr_target: "checkinEndTime", cleanersappointments_target: "checkinEndDate", end_date_calculation_target: "checkinEndTime" }, id: 'checkin_end_time' } %>
@@ -39,7 +39,7 @@
               </div>
             </div>
 
-            <div class="app-form-checkout">
+            <div class="app-form-checkout" data-checkinparts-target="checkout">
               <%= f.input :checkout_start_time, as: :string, input_html: { data: { flatpickr_target: "checkoutStartTime", cleanersappointments_target: "checkoutStartDate", end_date_calculation_target: "checkoutStartTime", action: "change->cleanersappointments#updateCheckoutCleaners change->end-date-calculation#updateCheckoutEndTime" } } %>
 
               <%= f.input :checkout_end_time, as: :string, input_html: { data: { flatpickr_target: "checkoutEndTime", cleanersappointments_target: "checkoutEndDate", end_date_calculation_target: "checkoutEndTime" }, id: 'checkout_end_time' } %>
@@ -51,13 +51,16 @@
               </div>
             </div>
           </div>
-
+          <div class="app-form-checkin-price">
+            <h5>Estimated time: <span data-checkinparts-target="time"></span></h5>
+            <h5>Price: <span data-checkinparts-target="price"></span></h5>
+          </div>
         </div>
       </div>
 
       <%# ///////////////// Cleaning Details Part of the form /////////////// %>
       <%# /////////////////////////////////////////////////////////////////// %>
-      <div class="app-form-container">
+      <div class="app-form-container" data-formparts-target="cleaningPart">
         <div class="app-form-text">
           <h4>Cleaning Details</h4>
           <p>Please provide the following details</p>

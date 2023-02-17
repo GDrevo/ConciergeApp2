@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="cleanersappointments"
 export default class extends Controller {
-  static targets = ["cleanerList", "startDate", "endDate", "selectedCleaner", "checkinCleanerList", "checkinStartDate", "checkinEndDate", "selectedCheckinCleaner"]
+  static targets = ["cleanerList", "startDate", "endDate", "selectedCleaner", "checkinCleanerList", "checkinStartDate", "checkinEndDate", "selectedCheckinCleaner", "checkoutCleanerList", "checkoutStartDate", "checkoutEndDate", "selectedCheckoutCleaner"]
 
   updateCleaners(event) {
     event.preventDefault()
@@ -41,7 +41,7 @@ export default class extends Controller {
       })
       .then(data => {
         console.log(data)
-        this.selectedCleanerTarget.innerHTML = `<h3>${data.name}</h3> <p>This is the description of the cleaner called ${data.name}.</p>`
+        this.selectedCleanerTarget.innerHTML = `<h4>${data.name}</h4> <p>This is the description of the cleaner called ${data.name}.</p>`
       })
       .catch(error => console.log(error))
   }
@@ -70,6 +70,44 @@ export default class extends Controller {
   }
 
   updateSelectedCheckinCleaner(event) {
+    const selectedCleanerId = event.target.value
+    const url = `/cleaners/${selectedCleanerId}`
+    console.log(url)
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.statusText}`);
+        }
+        console.log(response)
+        return response.json();
+      })
+      .catch(error => console.log(error))
+  }
+
+  updateCheckoutCleaners(event) {
+    event.preventDefault()
+
+    const startDate = this.checkoutStartDateTarget.value
+    const endDate = this.checkoutEndDateTarget.value
+    const url = `/appointments/available_cleaners?start_date=${startDate}&end_date=${endDate}`
+    if (startDate !== "" && endDate !== "") {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          this.checkoutCleanerListTarget.innerHTML = ""
+          data.forEach(cleaner => {
+            const option = document.createElement("option")
+            option.value = cleaner.id
+            option.text = cleaner.name
+            this.checkoutCleanerListTarget.appendChild(option)
+            this.checkoutCleanerListTarget.dispatchEvent(new Event("change"));
+          })
+        })
+        .catch(error => console.log(error))
+    }
+  }
+
+  updateSelectedCheckoutCleaner(event) {
     const selectedCleanerId = event.target.value
     const url = `/cleaners/${selectedCleanerId}`
     console.log(url)
