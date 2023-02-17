@@ -9,10 +9,10 @@
       <%# /////////////////////////////////////////////////////////////////// %>
       <div class="app-form-container">
         <div class="app-form-text">
-          <h4>Service</h4>
+          <h2>Service</h2>
         </div>
         <div class="app-form-form">
-          <%= f.input :pack, collection: ["Check in/out", "Cleaning", "Check in/out & Cleaning"], as: :radio_buttons, checked: "Check in/out", input_html: { data: { formparts_target: "service", action: "change->formparts#toggleHidden" } } %>
+          <%= f.input :pack, collection: ["Check in/out", "Cleaning", "Both"], as: :radio_buttons, checked: "Check in/out", input_html: { data: { formparts_target: "service", action: "change->formparts#toggleHidden" } } %>
         </div>
       </div>
 
@@ -20,7 +20,7 @@
       <%# /////////////////////////////////////////////////////////////////// %>
       <div class="app-form-container" data-formparts-target="checkinPart">
         <div class="app-form-text">
-          <h4>Check in/out</h4>
+          <h2>Check in/out</h2>
           <p>Please provide the following details</p>
         </div>
         <div class="app-form-form">
@@ -62,7 +62,7 @@
       <%# /////////////////////////////////////////////////////////////////// %>
       <div class="app-form-container" data-formparts-target="cleaningPart">
         <div class="app-form-text">
-          <h4>Cleaning Details</h4>
+          <h2>Cleaning Details</h2>
           <p>Please provide the following details</p>
         </div>
         <div class="app-form-form">
@@ -95,7 +95,7 @@
 
       <%# ////////////////////// Submit Part of the form //////////////////// %>
       <%# /////////////////////////////////////////////////////////////////// %>
-      <%= f.submit 'Schedule your appointment' %>
+      <%= f.submit 'BOOK', class: "submit-form-button" %>
 
     <% end %>
   </div>

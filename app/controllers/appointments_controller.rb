@@ -6,6 +6,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    redirect_to new_contact_path
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user if user_signed_in?
     case @appointment.pack

@@ -16,7 +16,6 @@ export default class extends Controller {
       return target.checked
     })
     if (selected.value == "Check in") {
-      console.log("Check in")
       if (checkinDiv.classList.contains("hidden")) {
         checkinDiv.classList.remove("hidden")
       }
@@ -30,7 +29,6 @@ export default class extends Controller {
       this.timeTarget.innerHTML = "1 hour"
     }
     if (selected.value == "Check out") {
-      console.log("Check out")
       if (checkinDiv.classList.contains("hidden") == false) {
         checkinDiv.classList.add("hidden")
       }
@@ -44,7 +42,6 @@ export default class extends Controller {
       this.timeTarget.innerHTML = "1 hour"
     }
     if (selected.value == "Check in & out") {
-      console.log("Check in & out")
       if (checkinDiv.classList.contains("hidden")) {
         checkinDiv.classList.remove("hidden")
       }

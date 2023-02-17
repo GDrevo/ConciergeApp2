@@ -1,5 +1,7 @@
 .appointment-container {
-  margin: 50px;
+  margin: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
   h1, h3 {
     text-align: center;
   }
@@ -35,6 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
   margin-bottom: 25px;
   .app-form-checkin, .app-form-checkout {
     width: 45%;
@@ -56,4 +59,43 @@
 
 .space-between {
   justify-content: space-between !important;
+}
+
+.form-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  margin-left: 25px;
+  padding: 0;
+  width: 400px;
+  input {
+    margin: 0 !important;
+    background-image: none !important;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px !important;
+  }
+  label {
+    margin-top: 10px;
+  }
+}
+
+.form-control, .form-select, .form-check-input {
+  background-color: $gray;
+}
+
+
+.submit-form-button {
+  position: absolute;
+  right: 10%;
+  background-color: $blue;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 25px;
+  padding-top: 8px;
+  border: 0;
+  border-radius: 5px;
+  width: 20%;
 }
