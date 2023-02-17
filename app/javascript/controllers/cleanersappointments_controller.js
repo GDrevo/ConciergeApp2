@@ -30,17 +30,14 @@ export default class extends Controller {
   updateSelectedCleaner(event) {
     const selectedCleanerId = event.target.value
     const url = `/cleaners/${selectedCleanerId}`
-    console.log(url)
     fetch(url)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.statusText}`);
         }
-        console.log(response)
         return response.json();
       })
       .then(data => {
-        console.log(data)
         this.selectedCleanerTarget.innerHTML = `<h4>${data.name}</h4> <p>This is the description of the cleaner called ${data.name}.</p>`
       })
       .catch(error => console.log(error))
@@ -72,13 +69,11 @@ export default class extends Controller {
   updateSelectedCheckinCleaner(event) {
     const selectedCleanerId = event.target.value
     const url = `/cleaners/${selectedCleanerId}`
-    console.log(url)
     fetch(url)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.statusText}`);
         }
-        console.log(response)
         return response.json();
       })
       .catch(error => console.log(error))
@@ -110,13 +105,11 @@ export default class extends Controller {
   updateSelectedCheckoutCleaner(event) {
     const selectedCleanerId = event.target.value
     const url = `/cleaners/${selectedCleanerId}`
-    console.log(url)
     fetch(url)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.statusText}`);
         }
-        console.log(response)
         return response.json();
       })
       .catch(error => console.log(error))
