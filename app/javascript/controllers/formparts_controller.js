@@ -31,7 +31,7 @@ export default class extends Controller {
         cleaningDiv.classList.remove("hidden")
       }
     }
-    if (selected.value == "Check in/out & Cleaning") {
+    if (selected.value == "Both") {
       if (checkinDiv.classList.contains("hidden")) {
         checkinDiv.classList.remove("hidden")
       }
