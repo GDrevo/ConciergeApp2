@@ -6,10 +6,9 @@ class Contact < MailForm::Base
 
   def headers
     {
-      to: "you@email.com", # change this to be the email you want sent to
+      to: "guillaumedrevo.pro@gmail.com", # change this to be the email you want sent to
       subject: "CleanersApp Contact Form",
-      from: "admin@cleanersapp.com",  # change this to be the email it is coming from
-      reply_to: %("#{name}" <#{email}>)
+      from: %("#{name}" <#{email}>)  # change this to be the email it is coming from
     }
   end
 end
