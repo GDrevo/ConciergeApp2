@@ -34,7 +34,7 @@ end
 
 start_date = Date.current
 
-(start_date..start_date + 1.months).each do |date|
+(start_date..start_date + 6.months).each do |date|
   cleaners.each do |cleaner|
     availability = Availability.new(
       cleaner:,
